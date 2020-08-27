@@ -25,14 +25,16 @@ function setWeatherDetails(data) {
   const text_temp = document.getElementById('text-temp');
   const text_cloud = document.getElementById('text-cloud');
 
+  const temp = (data.main.temp - 273).toFixed(2);
+  const see_level = data.main.sea_level;
+  const wind_speed = data.wind.speed;
+
+
   text_cityName.innerText = `${data.name}, ${data.sys.country}`;
-  text_cloud.innerText = data.weather[0].main;
+  text_temp.innerText = temp;
+  text_cloud.innerText = `${data.weather[0].main} 
+                          \n Sea Level: ${see_level} \nWind Speed: ${wind_speed}`;
 
 
 
-  const sys = data.sys;
-  console.log(sys);
-  console.log("country name: ", sys.country);
-  console.log("City name: ", data.name);
-  console.log("weather name: ", data.weather[0].main);
 }
